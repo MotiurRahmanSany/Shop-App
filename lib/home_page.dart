@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     selectedFilter = filters[0];
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     const border = OutlineInputBorder(
