@@ -5,6 +5,7 @@ class ProductCard extends StatelessWidget {
   final String image;
   final double price;
   final Color backgroundColor;
+
   const ProductCard({
     super.key,
     required this.title,
