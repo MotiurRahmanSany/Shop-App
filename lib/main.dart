@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_variables.dart';
 import 'package:shop_app/home_page.dart';
-import 'package:shop_app/product_details_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,9 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProductDetailsPage(
-        product: products[0],
-      ),
+      home: const HomePage(),
       theme: ThemeData(
         fontFamily: 'Lato',
         colorScheme: ColorScheme.fromSeed(
@@ -24,7 +20,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontSize: 20,
-            color: Colors.black,
+            color: Colors.black, 
           ),
         ),
         inputDecorationTheme: const InputDecorationTheme(
