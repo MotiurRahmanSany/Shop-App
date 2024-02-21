@@ -18,6 +18,9 @@ class _HomePageState extends State<HomePage> {
     'Nike',
     'Bata',
   ];
+
+  int currentPage = 1;
+
   @override
   void initState() {
     super.initState();
@@ -135,6 +138,26 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        onTap: (value) {
+          setState(() {
+            currentPage = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
+            label: '',
+          ),
+        ],
       ),
     );
   }
