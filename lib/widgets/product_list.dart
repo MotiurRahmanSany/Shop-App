@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/global_variables.dart';
+import 'package:shop_app/dummy_data.dart';
 import 'package:shop_app/widgets/product_card.dart';
 import 'package:shop_app/pages/product_details_page.dart';
 

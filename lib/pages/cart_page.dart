@@ -12,7 +12,16 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cart'),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('My Cart ', style: Theme.of(context).textTheme.titleLarge),
+            const Icon(
+              Icons.shopping_cart_outlined,
+              size: 38,
+            ),
+          ],
+        ),
         centerTitle: true,
       ),
       body: ListView.builder(
@@ -62,6 +71,11 @@ class CartPage extends StatelessWidget {
                             // Provider.of<CartProvider>(context, listen: false)
                             //     .removeProduct(cartItem);
                             Navigator.of(context).pop();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Product deleted from the cart!'),
+                              ),
+                            );
                           },
                           child: const Text(
                             'Yes',
