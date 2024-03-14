@@ -50,7 +50,7 @@ class _ProductListState extends State<ProductList> {
               const Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: 'Search',
+                    hintText: 'Search in MyShop',
                     prefixIcon: Icon(Icons.search),
                     // border: border,
                     enabledBorder: border,

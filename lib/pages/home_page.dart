@@ -36,8 +36,12 @@ class _HomePageState extends State<HomePage> {
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_cart,
+            icon: Badge(
+              label: Text('0', style: TextStyle(fontWeight: FontWeight.bold)),
+              backgroundColor: Colors.blue,
+              child: Icon(
+                Icons.shopping_cart,
+              ),
             ),
             label: '',
           ),
