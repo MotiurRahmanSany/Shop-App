@@ -3,9 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/pages/home_page.dart';
 import 'package:shop_app/providers/cart_provider.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     Widget emptyContent = Center(
@@ -33,7 +38,7 @@ class CartPage extends StatelessWidget {
               height: 50,
               decoration: BoxDecoration(
                 border: Border.all(
-                  width: 1,
+                  width: 2,
                   color: Colors.black,
                   // style:
                 ),
@@ -81,8 +86,10 @@ class CartPage extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   subtitle: Text(
-                    'Size ${cartItem['size']}',
+                    'Size: ${cartItem['size']}    Quantity: 1',
                   ),
+                  isThreeLine: true,
+                  // dense: true,
                   trailing: IconButton(
                     onPressed: () {
                       showDialog(
@@ -94,7 +101,7 @@ class CartPage extends StatelessWidget {
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
                             content: const Text(
-                              'Are you sure you want to remove this product from your cart?',
+                              'Are you sure you want to remove this from your cart?',
                             ),
                             actions: [
                               TextButton(
@@ -108,6 +115,7 @@ class CartPage extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
+                                  final itemIndex = cart.indexOf(cartItem);
                                   context
                                       .read<CartProvider>()
                                       .removeProduct(cartItem);
@@ -117,10 +125,20 @@ class CartPage extends StatelessWidget {
                                   ScaffoldMessenger.of(context)
                                       .clearSnackBars();
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      duration: Duration(seconds: 2),
-                                      content: Text(
-                                          'Product deleted from the cart!'),
+                                    SnackBar(
+                                      duration: const Duration(seconds: 2),
+                                      content: const Text(
+                                        'Product deleted from the cart!',
+                                      ),
+                                      action: SnackBarAction(
+                                        label: 'Undo',
+                                        onPressed: () {
+                                          context
+                                              .read<CartProvider>()
+                                              .undoDeleteProduct(
+                                                  itemIndex, cartItem);
+                                        },
+                                      ),
                                     ),
                                   );
                                 },

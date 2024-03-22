@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/dummy_data.dart';
+import 'package:shop_app/database/dummy_data.dart';
 import 'package:shop_app/widgets/product_card.dart';
 import 'package:shop_app/pages/product_details_page.dart';
 
@@ -50,7 +50,7 @@ class _ProductListState extends State<ProductList> {
               const Expanded(
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: 'Search in MyShop',
+                    hintText: 'Search',
                     prefixIcon: Icon(Icons.search),
                     // border: border,
                     enabledBorder: border,

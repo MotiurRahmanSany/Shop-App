@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_app/pages/cart_page.dart';
+import 'package:shop_app/providers/cart_provider.dart';
 import 'package:shop_app/widgets/product_list.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,16 +32,19 @@ class _HomePageState extends State<HomePage> {
             currentPage = value;
           });
         },
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Badge(
-              label: Text('0', style: TextStyle(fontWeight: FontWeight.bold)),
+              label: Text(
+                Provider.of<CartProvider>(context).totalCartItems.toString(),
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
               backgroundColor: Colors.blue,
-              child: Icon(
+              child: const Icon(
                 Icons.shopping_cart,
               ),
             ),
